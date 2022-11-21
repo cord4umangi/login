@@ -154,9 +154,9 @@ const LoginScreen = ({navigation}) => {
               style={[
                 styles.font_poppins,
                 styles.inputText,
-                // {
-                //   letterSpacing: 5,
-                // },
+                {
+                  letterSpacing: 5,
+                },
               ]}
               placeholder="Enter Your Password"
               // underlineColorAndroid="transparent"
