@@ -43,11 +43,6 @@ const App = () => {
               name="SignUp"
               component={SignUp}
             />
-            {/* <Stack.Screen
-              options={{headerShown: false}}
-              name="SignUp"
-              component={Register}
-            /> */}
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>
