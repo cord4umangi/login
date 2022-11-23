@@ -1,47 +1,40 @@
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {View, Text, TouchableOpacity} from 'react-native';
-import styles from './css/loginSignup';
+import {View, TouchableOpacity} from 'react-native';
+import {Text, TextInput, Button} from 'react-native-paper';
+
 const Dashboard = ({navigation}) => {
   const [userName, setUsername] = useState('');
-  // useEffect(() => {
-  //   // AsyncStorage.clear();
-  //   getAsyncItem();
-  // }, []);
+  const [isAuth, setIsAuth] = useState(false);
 
-  // const getAsyncItem = async () => {
-  //   try {
-  //     const value = await AsyncStorage.getItem('auth');
-  //     if (value) {
-  //       const authJson = JSON.parse(value);
-  //       const email = authJson.email;
-  //       setUsername(email);
-  //       // alert(value);
-  //     } else {
-  //       navigation.navigate('Login');
-  //     }
-  //   } catch (e) {
-  //     // error reading value
-  //   }
-  // };
+  async function getAuth() {
+    const getAuth = await AsyncStorage.getItem('auth');
+    if (!getAuth) {
+      navigation.navigate('SignIn');
+      setIsAuth(true);
+    }
+  }
+  getAuth();
+
   const Logout = () => {
-    // AsyncStorage.removeItem('auth');
-    AsyncStorage.clear();
-    navigation.navigate('Login');
+    AsyncStorage.removeItem('auth');
+    // AsyncStorage.clear();
+    navigation.replace('SignIn');
   };
 
   return (
     <>
       <View style={{alignItems: 'center', marginTop: 80}}>
-        <Text>Welcome {userName} </Text>
-        <View style={{backgroundColor: 'red', borderRadius: 5, marginTop: 20}}>
-          <TouchableOpacity
-            onPress={() => {
-              Logout();
-            }}>
-            <Text style={{color: '#ffffff', padding: 5}}>Logout</Text>
-          </TouchableOpacity>
-        </View>
+        <Text variant="displaySmall" style={{color: '#fa3b59'}}>
+          Welcome
+        </Text>
+        <Button
+          mode="contained"
+          onPress={() => Logout()}
+          textColor={'#ffffff'}
+          style={{backgroundColor: '#fa3b59', borderRadius: 5, marginTop: 30}}>
+          Logout
+        </Button>
       </View>
     </>
   );

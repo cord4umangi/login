@@ -10,42 +10,53 @@ import {
 // import {Button} from 'react-native-paper';
 import {Text, TextInput, Button} from 'react-native-paper';
 import styles from './css/signupcss';
-
-const SignUp = ({navigation}) => {
-  const [name, setName] = useState('New Admin');
+const SignIn = ({navigation}) => {
   const [email, setEmail] = useState('admin@gmail.com');
   const [password, setPassword] = useState('admin');
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const [isSecureTextEntry, setIsSecureTextEntry] = useState(true);
+  const [isDisplayInvalidPassword, setIsDisplayInvalidPassword] =
+    useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isPrivacyPolicy, setIsPrivacyPolicy] = useState(false);
 
-  const handleSignUp = async () => {
+  const handleLogin = async () => {
     setIsLoading(true);
-    if (name && email && password) {
-      const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-      if (reg.test(email) === false) {
-        setIsLoading(false);
-        alert('Invalid Email');
-      } else {
-        const userJson = {name: name, email: email, password: password};
-        const userCred = JSON.stringify(userJson);
-        try {
-          const setRegAuth = await AsyncStorage.setItem('regAuth', userCred);
-          setIsLoading(false);
-          navigation.replace('SignIn');
-        } catch (e) {
-          // saving error
-          setIsLoading(false);
-          alert('e', e);
-        }
-        // alert(email);
-        // alert(password);
-      }
-    } else {
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (reg.test(email) === false) {
       setIsLoading(false);
+      alert('Invalid Email');
+    } else {
+      const value = await AsyncStorage.getItem('regAuth');
+      if (value) {
+        const authJson = JSON.parse(value);
+        const regEmail = authJson.email;
+        const regPass = authJson.password;
+
+        if (regEmail === email && regPass === password) {
+          const userJson = {email: email, password: password};
+          const userCred = JSON.stringify(userJson);
+          try {
+            await AsyncStorage.setItem('auth', userCred);
+            setIsLoading(false);
+            navigation.replace('Dashboard');
+          } catch (e) {
+            // saving error
+            setIsLoading(false);
+            alert('e', e);
+          }
+          // alert(email);
+          // alert(password);
+        } else {
+          setIsLoading(false);
+          alert('invalid user credentials');
+        }
+      } else {
+        setIsLoading(false);
+        alert('you are not registered');
+      }
     }
   };
+
   const checkPasswordVisibility = () => {
     if (isVisiblePassword === true) {
       setIsVisiblePassword(false);
@@ -55,7 +66,6 @@ const SignUp = ({navigation}) => {
       setIsSecureTextEntry(false);
     }
   };
-
   return (
     <>
       <ScrollView>
@@ -70,9 +80,10 @@ const SignUp = ({navigation}) => {
               />
             </View>
             <View style={styles.headerTextParent}>
-              <Text style={styles.headerText}>Join us to start searching</Text>
+              <Text style={styles.headerText}>Welcome back</Text>
               <Text style={styles.headerTextSmall}>
-                Discover your perfect university
+                You can search cource, apply cource and find scholarship for
+                abord studies
               </Text>
             </View>
             <View style={styles.mainBtnParent}>
@@ -111,22 +122,6 @@ const SignUp = ({navigation}) => {
               style={{display: 'flex', alignItems: 'center', marginTop: 50}}>
               <TextInput
                 mode="outlined"
-                value={name}
-                onChangeText={text => {
-                  setName(text);
-                }}
-                placeholder="Enter Your Name Here"
-                textColor={'#000000'}
-                activeOutlineColor={'#fa3b59'}
-                outlineColor={'#d2d2d2'}
-                style={{
-                  backgroundColor: '#ffffff',
-                  width: '90%',
-                  height: 35,
-                }}
-              />
-              <TextInput
-                mode="outlined"
                 value={email}
                 onChangeText={text => {
                   // checkValidEmail(text);
@@ -141,21 +136,20 @@ const SignUp = ({navigation}) => {
                   backgroundColor: '#ffffff',
                   width: '90%',
                   height: 35,
-                  marginTop: 10,
                 }}
-                //   right={
-                //     <TextInput.Icon
-                //       style={{
-                //         marginTop: '50%',
-                //       }}
-                //       icon={({size, color}) => (
-                //         <Image
-                //           source={require('./media/check.png')}
-                //           style={{width: 15, height: 15, tintColor: '#d2d2d2'}}
-                //         />
-                //       )}
-                //     />
-                //   }
+                right={
+                  <TextInput.Icon
+                    style={{
+                      marginTop: '50%',
+                    }}
+                    icon={({size, color}) => (
+                      <Image
+                        source={require('./media/check.png')}
+                        style={{width: 15, height: 15, tintColor: '#d2d2d2'}}
+                      />
+                    )}
+                  />
+                }
               />
               <TextInput
                 mode="outlined"
@@ -212,30 +206,41 @@ const SignUp = ({navigation}) => {
             <View style={{marginTop: 25, marginHorizontal: 20}}>
               <Button
                 onPress={() => {
-                  handleSignUp();
+                  handleLogin();
                 }}
                 uppercase={false}
                 style={{backgroundColor: '#fa3b59', borderRadius: 5}}
                 mode="contained"
                 // loading={loadingBtn}
                 textColor={'#ffffff'}>
-                Join Us
+                Login
               </Button>
+            </View>
+
+            <View style={{alignItems: 'center', marginTop: 20}}>
+              {/* <Text style={[{color: '#fa3b59', fontFamily: 'poppins-Medium'}]}>
+            Forgot password ?
+          </Text> */}
+              <Text
+                variant="bodyMedium"
+                style={[{color: '#fa3b59', fontFamily: 'poppins-Medium'}]}>
+                Forgot password ?
+              </Text>
             </View>
             <View
               style={{
                 alignItems: 'center',
-                marginTop: '35%',
+                marginTop: '30%',
               }}>
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate('SignIn');
+                  navigation.navigate('SignUp');
                 }}>
                 <Text
                   style={{
                     color: '#fa3b59',
                   }}>
-                  Have an account ? Join us
+                  Dont have an account ? Join us
                 </Text>
               </TouchableOpacity>
             </View>
@@ -246,4 +251,4 @@ const SignUp = ({navigation}) => {
   );
 };
 
-export default SignUp;
+export default SignIn;

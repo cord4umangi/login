@@ -6,15 +6,18 @@ export default StyleSheet.create({
     marginTop: 15,
     // display: 'flex',
     alignItems: 'center',
+
     // backgroundColor: 'red',
   },
   loginBtnTouchable: {
     display: 'flex',
+    marginHorizontal: 20,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     // backgroundColor: '#fa3b59',
     // backgroundColor: '#ffb9c4',
-    width: 360,
+    width: 320,
     height: 38,
     borderRadius: 5,
     // shadowColor: 'green',
@@ -63,7 +66,8 @@ export default StyleSheet.create({
   btnTouchable: {
     display: 'flex',
     backgroundColor: '#ffffff',
-    width: 170,
+    // width: 170,
+    paddingHorizontal: 35,
     alignItems: 'center',
     borderRadius: 5,
     // shadowColor: 'purple',
@@ -107,7 +111,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     borderColor: '#d1d1d1',
     borderWidth: 1,
-    width: 365,
+    // width: 365,
     height: 40,
     borderRadius: 5,
     color: '#000000',
@@ -118,6 +122,7 @@ export default StyleSheet.create({
     paddingLeft: 10,
     marginTop: 3,
     width: 300,
+    color: '#000000',
     // backgroundColor: 'red',
   },
   inputImage: {
@@ -128,5 +133,22 @@ export default StyleSheet.create({
   },
   right_30: {
     right: -30,
+  },
+  TandCMainView: {
+    // backgroundColor: '#d3d3d3',
+    alignItems: 'center',
+  },
+  TAndCParent: {
+    marginTop: 15,
+    width: 360,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    // backgroundColor: 'red',
+  },
+  inputCheckImage: {
+    height: 13,
+    width: 13,
+    marginRight: 10,
   },
 });
