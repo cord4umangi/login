@@ -9,7 +9,7 @@ import TextAreaInput from './component/textArea';
 import Multiselect from './component/multiselect';
 import RadioButtonInput from './component/radiobutton';
 import CollapseExpand from './component/collapse';
-
+import Accordion from './component/accordian';
 const Dashboard = ({navigation}) => {
   const [userName, setUsername] = useState('');
   const [isAuth, setIsAuth] = useState(false);
@@ -62,6 +62,8 @@ const Dashboard = ({navigation}) => {
             <RadioButtonInput />
             <Text variant="bodyMedium">Collapse Expand</Text>
             <CollapseExpand />
+            <Text variant="bodyMedium">Accordian</Text>
+            <Accordion />
           </View>
         </View>
       </ScrollView>
