@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
-import {RadioButton, Text} from 'react-native-paper';
-
+import {RadioButton} from 'react-native-paper';
+import TextComp from './textComp';
 const RadioButtonInput = () => {
   const [checked, setChecked] = React.useState('first');
   return (
@@ -13,7 +13,7 @@ const RadioButtonInput = () => {
             status={checked === 'first' ? 'checked' : 'unchecked'}
             onPress={() => setChecked('first')}
           />
-          <Text>First</Text>
+          <TextComp varient={'bodyMedium'} textTitle={'First'} />
         </View>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <RadioButton
@@ -21,7 +21,7 @@ const RadioButtonInput = () => {
             status={checked === 'second' ? 'checked' : 'unchecked'}
             onPress={() => setChecked('second')}
           />
-          <Text>Second</Text>
+          <TextComp varient={'bodyMedium'} textTitle={'Second'} />
         </View>
       </View>
     </>

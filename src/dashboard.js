@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {View, TouchableOpacity, ScrollView} from 'react-native';
-import {Text, TextInput, Button} from 'react-native-paper';
+import {TextInput, Button} from 'react-native-paper';
 import styles from './css/dashboardcss';
 import NormalInput from './component/notmalInput';
 import PasswordInput from './component/inputPassword';
@@ -10,6 +10,9 @@ import Multiselect from './component/multiselect';
 import RadioButtonInput from './component/radiobutton';
 import CollapseExpand from './component/collapse';
 import Accordion from './component/accordian';
+import TextComp from './component/textComp';
+import ImageComp from './component/image';
+
 const Dashboard = ({navigation}) => {
   const [userName, setUsername] = useState('');
   const [isAuth, setIsAuth] = useState(false);
@@ -34,9 +37,12 @@ const Dashboard = ({navigation}) => {
       <ScrollView style={{flex: 1, backgroundColor: '#ffffff'}}>
         <View style={styles.bodyView}>
           <View style={{alignItems: 'center', justifyContent: 'center'}}>
-            <Text variant="displaySmall" style={{color: '#fa3b59'}}>
-              Welcome
-            </Text>
+            <TextComp
+              textVariant="headlineMedium"
+              customTextColor={'#fa3b59'}
+              textTitle={'Welcome'}
+            />
+
             <Button
               mode="contained"
               onPress={() => Logout()}
@@ -48,40 +54,58 @@ const Dashboard = ({navigation}) => {
               }}>
               Logout
             </Button>
+
+            <Button
+              mode="contained"
+              onPress={() => {
+                navigation.navigate('About');
+              }}
+              textColor={'#ffffff'}
+              style={{
+                backgroundColor: '#fa3b59',
+                borderRadius: 5,
+                marginTop: 30,
+              }}>
+              Go to About
+            </Button>
           </View>
           <View style={{marginTop: 20}}>
-            <Text variant="bodyMedium">Normal Input</Text>
-            <NormalInput />
-            <Text variant="bodyMedium">Password Input</Text>
-            <PasswordInput />
-            <Text variant="bodyMedium">TextArea</Text>
-            <TextAreaInput />
-            <Text variant="bodyMedium">MultiSelect</Text>
+            <TextComp textVariant={'bodyMedium'} textTitle={'Normal Input'} />
+            <NormalInput
+              placeholder={'Normal Input'}
+              mode="outlined"
+              activeOutlineColor="#000000"
+            />
+
+            <TextComp textVariant={'bodyMedium'} textTitle={'Password Input'} />
+            <PasswordInput
+              placeholder={'Normal Input'}
+              mode="outlined"
+              activeOutlineColor="#000000"
+            />
+
+            <TextComp textVariant={'bodyMedium'} textTitle={'TextArea'} />
+            <TextAreaInput
+              placeholder={'Textarea'}
+              mode="outlined"
+              activeOutlineColor="#000000"
+            />
+
+            <TextComp textVariant={'bodyMedium'} textTitle={'MultiSelect'} />
             <Multiselect />
-            <Text variant="bodyMedium">RadioButton</Text>
+
+            <TextComp textVariant={'bodyMedium'} textTitle={'RadioButton'} />
             <RadioButtonInput />
-            <Text variant="bodyMedium">Collapse Expand</Text>
-            <CollapseExpand />
-            <Text variant="bodyMedium">Accordian</Text>
-            <Accordion />
+
+            {/* <TextComp varient={'bodyMedium'} textTitle={'Collapse Expand'} /> */}
+            {/* <CollapseExpand /> */}
+            <TextComp textVariant={'bodyMedium'} textTitle={'Accordian'} />
+            {/* <Accordion /> */}
+            <TextComp textVariant={'bodyMedium'} textTitle={'Image'} />
+            <ImageComp />
           </View>
         </View>
       </ScrollView>
-      {/* <View style={{alignItems: 'center', marginTop: 80}}>
-        <Text variant="displaySmall" style={{color: '#fa3b59'}}>
-          Welcome
-        </Text>
-        <Button
-          mode="contained"
-          onPress={() => Logout()}
-          textColor={'#ffffff'}
-          style={{backgroundColor: '#fa3b59', borderRadius: 5, marginTop: 30}}>
-          Logout
-        </Button>
-        <View>
-          <NormalInput />
-        </View>
-      </View> */}
     </>
   );
 };

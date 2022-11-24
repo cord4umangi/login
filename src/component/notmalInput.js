@@ -2,13 +2,25 @@ import React, {useState} from 'react';
 import {View} from 'react-native';
 import {TextInput} from 'react-native-paper';
 
-const NormalInput = () => {
+const NormalInput = ({
+  placeholder,
+  backgroundColor,
+  mode,
+  textColor,
+  activeOutlineColor,
+}) => {
   const [text, setText] = useState('');
   return (
     <TextInput
       value={text}
       onChangeText={text => setText(text)}
-      placeholder="Normal Input"
+      placeholder={placeholder}
+      mode={mode}
+      textColor={textColor ? textColor : '#000000'}
+      activeOutlineColor={activeOutlineColor ? activeOutlineColor : '#000000'}
+      style={{
+        backgroundColor: `${backgroundColor ? backgroundColor : '#ffffff'}`,
+      }}
     />
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import {AccordionList} from 'accordion-collapse-react-native';
-
+import TextComp from './textComp';
 const Accordion = () => {
   const list = [
     {
@@ -18,17 +18,27 @@ const Accordion = () => {
 
   const head = item => {
     return (
-      <View bordered style={{alignItems: 'center'}}>
-        <Text>{item.title}</Text>
-      </View>
+      <>
+        <View style={{alignItems: 'center'}}>
+          {/* <TextComp>{item.title}</TextComp> */}
+          <TextComp
+            varient={'bodyMedium'}
+            customTextColor="#fa3b59"
+            textTitle={item.title}
+          />
+        </View>
+      </>
     );
   };
 
   const body = item => {
     return (
-      <View style={{padding: 10}}>
-        <Text style={{textAlign: 'center'}}>{item.body}</Text>
-      </View>
+      <>
+        <View style={{padding: 10}}>
+          {/* <TextComp style={{textAlign: 'center'}}>{item.body}</TextComp> */}
+          <TextComp varient={'bodyMedium'} textTitle={item.body} />
+        </View>
+      </>
     );
   };
 

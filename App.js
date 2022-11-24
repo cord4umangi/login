@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 // import LoginScreen from './src/login';
+import DrawerNav from './src/drawerNavigation';
 import SignIn from './src/signIn';
 import SignUp from './src/signUp';
-// import Register from './src/register';
 import Dashboard from './src/dashboard';
+import About from './src/about';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {View, Text, StyleSheet, Button} from 'react-native';
@@ -42,6 +43,11 @@ const App = () => {
               options={{headerShown: false}}
               name="SignUp"
               component={SignUp}
+            />
+            <Stack.Screen
+              options={{headerShown: false}}
+              name="About"
+              component={About}
             />
           </Stack.Navigator>
         </NavigationContainer>
