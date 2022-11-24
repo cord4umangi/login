@@ -33,6 +33,7 @@ const PermissionComp = () => {
       <Button
         mode="contained"
         buttonColor="#fa3b59"
+        textColor="#ffffff"
         style={{
           borderRadius: 5,
         }}

@@ -19,6 +19,7 @@ const Multiselect = () => {
   return (
     <MultiSelect
       style={styles.dropdown}
+      itemTextStyle={styles.itemTextStyle}
       placeholderStyle={styles.placeholderStyle}
       selectedTextStyle={styles.selectedTextStyle}
       inputSearchStyle={styles.inputSearchStyle}
@@ -45,12 +46,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderBottomColor: 'gray',
     borderBottomWidth: 0.5,
+    color: '#000000',
   },
   placeholderStyle: {
     fontSize: 16,
+    color: '#000000',
   },
   selectedTextStyle: {
     fontSize: 14,
+    color: '#000000',
   },
   iconStyle: {
     width: 20,
@@ -59,12 +63,17 @@ const styles = StyleSheet.create({
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
+    color: '#000000',
   },
   icon: {
     marginRight: 5,
   },
   selectedStyle: {
     borderRadius: 12,
+    color: '#000000',
+  },
+  itemTextStyle: {
+    color: '#000000',
   },
 });
 
