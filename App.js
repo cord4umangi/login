@@ -16,11 +16,11 @@ const App = () => {
     <>
       <PaperProvider>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Dashboard">
+          <Stack.Navigator initialRouteName="DrawerNav">
             <Stack.Screen
               options={{headerShown: false}}
-              name="Dashboard"
-              component={Dashboard}
+              name="DrawerNav"
+              component={DrawerNav}
             />
             <Stack.Screen
               options={{headerShown: false}}

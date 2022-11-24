@@ -10,8 +10,16 @@ const DrawerNav = () => {
   return (
     <>
       <Drawer.Navigator>
-        <Drawer.Screen name="Dashboard" component={Dashboard} />
-        <Drawer.Screen name="About" component={About} />
+        <Drawer.Screen
+          options={{headerShown: true}}
+          name="Dashboard"
+          component={Dashboard}
+        />
+        <Drawer.Screen
+          options={{headerShown: true}}
+          name="About"
+          component={About}
+        />
       </Drawer.Navigator>
     </>
   );

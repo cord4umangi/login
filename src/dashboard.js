@@ -12,6 +12,9 @@ import CollapseExpand from './component/collapse';
 import Accordion from './component/accordian';
 import TextComp from './component/textComp';
 import ImageComp from './component/image';
+import PermissionComp from './component/permissionComp';
+import ShareComp from './component/shareComp';
+// import ImageSliderComp from './component/imageSlider';
 
 const Dashboard = ({navigation}) => {
   const [userName, setUsername] = useState('');
@@ -103,6 +106,12 @@ const Dashboard = ({navigation}) => {
             {/* <Accordion /> */}
             <TextComp textVariant={'bodyMedium'} textTitle={'Image'} />
             <ImageComp />
+            <TextComp textVariant={'bodyMedium'} textTitle={'Permission'} />
+            <PermissionComp />
+            <TextComp textVariant={'bodyMedium'} textTitle={'Share'} />
+            <ShareComp />
+            <TextComp textVariant={'bodyMedium'} textTitle={'Image Slider'} />
+            {/* <ImageSliderComp /> */}
           </View>
         </View>
       </ScrollView>

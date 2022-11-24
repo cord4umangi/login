@@ -10,6 +10,7 @@ const RadioButtonInput = () => {
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <RadioButton
             value="first"
+            color={'#fa3b59'}
             status={checked === 'first' ? 'checked' : 'unchecked'}
             onPress={() => setChecked('first')}
           />
@@ -18,6 +19,7 @@ const RadioButtonInput = () => {
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <RadioButton
             value="second"
+            color={'#fa3b59'}
             status={checked === 'second' ? 'checked' : 'unchecked'}
             onPress={() => setChecked('second')}
           />

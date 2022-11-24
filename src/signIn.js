@@ -38,7 +38,7 @@ const SignIn = ({navigation}) => {
           try {
             await AsyncStorage.setItem('auth', userCred);
             setIsLoading(false);
-            navigation.replace('Dashboard');
+            navigation.replace('DrawerNav');
           } catch (e) {
             // saving error
             setIsLoading(false);
