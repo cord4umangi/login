@@ -55,7 +55,7 @@ const Dashboard = ({navigation}) => {
               Logout
             </Button>
 
-            <Button
+            {/* <Button
               mode="contained"
               onPress={() => {
                 navigation.navigate('About');
@@ -67,7 +67,7 @@ const Dashboard = ({navigation}) => {
                 marginTop: 30,
               }}>
               Go to About
-            </Button>
+            </Button> */}
           </View>
           <View style={{marginTop: 20}}>
             <TextComp textVariant={'bodyMedium'} textTitle={'Normal Input'} />

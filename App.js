@@ -4,25 +4,14 @@ import DrawerNav from './src/drawerNavigation';
 import SignIn from './src/signIn';
 import SignUp from './src/signUp';
 import Dashboard from './src/dashboard';
-import About from './src/about';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {View, Text, StyleSheet, Button} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {StyleSheet} from 'react-native';
 import {Provider as PaperProvider} from 'react-native-paper';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const [isAuth, setIsAuth] = useState(false);
-
-  const checkAuth = async () => {
-    const getAuth = await AsyncStorage.getItem('auth');
-    if (getAuth) {
-      setIsAuth(true);
-    }
-  };
-
   return (
     <>
       <PaperProvider>
@@ -33,7 +22,6 @@ const App = () => {
               name="Dashboard"
               component={Dashboard}
             />
-
             <Stack.Screen
               options={{headerShown: false}}
               name="SignIn"
@@ -43,11 +31,6 @@ const App = () => {
               options={{headerShown: false}}
               name="SignUp"
               component={SignUp}
-            />
-            <Stack.Screen
-              options={{headerShown: false}}
-              name="About"
-              component={About}
             />
           </Stack.Navigator>
         </NavigationContainer>
