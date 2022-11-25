@@ -14,7 +14,7 @@ import TextComp from './component/textComp';
 import ImageComp from './component/image';
 import PermissionComp from './component/permissionComp';
 import ShareComp from './component/shareComp';
-// import ImageSliderComp from './component/imageSlider';
+import ImageSliderComp from './component/imageSlider';
 
 const Dashboard = ({navigation}) => {
   const [userName, setUsername] = useState('');
@@ -111,7 +111,7 @@ const Dashboard = ({navigation}) => {
             <TextComp textVariant={'bodyMedium'} textTitle={'Share'} />
             <ShareComp />
             <TextComp textVariant={'bodyMedium'} textTitle={'Image Slider'} />
-            {/* <ImageSliderComp /> */}
+            <ImageSliderComp />
           </View>
         </View>
       </ScrollView>
