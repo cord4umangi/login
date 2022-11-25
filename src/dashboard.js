@@ -103,7 +103,7 @@ const Dashboard = ({navigation}) => {
             {/* <TextComp varient={'bodyMedium'} textTitle={'Collapse Expand'} /> */}
             {/* <CollapseExpand /> */}
             <TextComp textVariant={'bodyMedium'} textTitle={'Accordian'} />
-            {/* <Accordion /> */}
+            <Accordion />
             <TextComp textVariant={'bodyMedium'} textTitle={'Image'} />
             <ImageComp />
             <TextComp textVariant={'bodyMedium'} textTitle={'Permission'} />
